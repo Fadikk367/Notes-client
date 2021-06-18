@@ -1,20 +1,28 @@
 import { Switch, Route } from 'react-router-dom';
 
 import { Home, Subject } from './views';
-import { Navigation } from './components';
+import { Header, Navigation, Logo, Footer } from './components';
+
+import { GlobalStyles, Layout, Page } from './style';
 
 
 function App() {
   return (
-    <div>
-      <header>
+    <Layout>
+      <GlobalStyles />
+      <Header>
+        <Logo />
         <Navigation />
-      </header>
-      <Switch>
-        <Route path="/subjects/:id/notes" component={Subject}/>
-        <Route path="/subjects" exact component={Home}/>
-      </Switch>
-    </div>
+      </Header>
+      <Page>
+        <Switch>
+          <Route path="/subjects/:id/notes" component={Subject}/>
+          <Route path="/subjects" exact component={Home}/>
+          <Route path="/subjects" exact component={Home}/>
+        </Switch>
+      </Page>
+      <Footer />
+    </Layout>
   );
 }
 
