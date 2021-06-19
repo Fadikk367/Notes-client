@@ -1,12 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { Typography, Button } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 
+const Container = styled.div`
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+`;
+
 const About = () => {
   return (
-    <>
+    <Container>
       <Typography variant="h2" align="center" gutterBottom>
         Welcome to Notes
       </Typography>
@@ -27,7 +35,7 @@ const About = () => {
           gap: '2rem'
         }}
       >
-        Sources for this project and coumentation:
+        Sources for this project with documentation:
         <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
           <Button
             color="primary"
@@ -39,7 +47,7 @@ const About = () => {
           </Button>
         </Link>
       </Typography>
-    </>
+    </Container>
   );
 }
 
