@@ -1,17 +1,42 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+import { NavLink as _NavLink } from 'react-router-dom';
+import { Breadcrumbs as _Breadcrumbs } from '@material-ui/core';
 
+const LinkList = styled.ul`
+  display: flex;
+  list-style-type: none;
+  gap: 1rem;
+
+  color: white;
+  font-size: 2rem;
+`;
+
+const NavLink = styled(_NavLink)`
+  text-decoration: none;
+  color: white;
+`;
+
+const Breadcrumbs = styled(_Breadcrumbs)`
+  && {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: white;
+  }
+`;
 
 const Navigation = () => {
   return (
     <div>
-      <ul>
-        <li>
+      <LinkList>
+        <Breadcrumbs>
+          <NavLink to="/subjects">Home</NavLink>
           <NavLink to="/subjects">Subjects</NavLink>
-        </li>
-      </ul>
+          <NavLink to="/about">About</NavLink>
+        </Breadcrumbs>
+      </LinkList>
     </div>
-  )
+  );
 }
 
 export default Navigation;

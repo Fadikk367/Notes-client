@@ -1,9 +1,9 @@
 import { Switch, Route } from 'react-router-dom';
 
-import { Home, Subject } from './views';
+import { Home, Subject, About } from './views';
 import { Header, Navigation, Logo, Footer } from './components';
 
-import { GlobalStyles, Layout, Page } from './style';
+import { GlobalStyles, Layout, Main, Page } from './style';
 
 
 function App() {
@@ -14,14 +14,16 @@ function App() {
         <Logo />
         <Navigation />
       </Header>
-      <Page>
-        <Switch>
-          <Route path="/subjects/:id/notes" component={Subject}/>
-          <Route path="/subjects" exact component={Home}/>
-          <Route path="/subjects" exact component={Home}/>
-        </Switch>
-      </Page>
-      <Footer />
+      <Main>
+        <Page>
+          <Switch>
+            <Route path="/subjects" exact component={Home}/>
+            <Route path="/subjects/:id/notes" component={Subject}/>
+            <Route path="/about" component={About}/>
+          </Switch>
+        </Page>
+        <Footer />
+      </Main>
     </Layout>
   );
 }

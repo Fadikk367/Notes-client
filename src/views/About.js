@@ -1,0 +1,46 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+import { Typography, Button } from '@material-ui/core';
+import GitHubIcon from '@material-ui/icons/GitHub';
+
+const About = () => {
+  return (
+    <>
+      <Typography variant="h2" align="center" gutterBottom>
+        Welcome to Notes
+      </Typography>
+      <Typography variant="body1" align="center" style={{ fontSize: '1.7rem', fontWeight: '300', maxWidth: '700px', margin: '0 auto' }}>
+        This app was created as a final project for Databases 2 course at AGH University of Science and Technology.
+      </Typography>
+
+      <Typography 
+        variant="body1" 
+        align="center" 
+        style={{ 
+          fontSize: '1.7rem', 
+          fontWeight: '300',
+          maxWidth: '800px', 
+          margin: '3rem auto',
+          display: 'flex',
+          justifyContent: 'center' ,
+          gap: '2rem'
+        }}
+      >
+        Sources for this project and coumentation:
+        <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+          <Button
+            color="primary"
+            variant="contained"
+            size="large"
+            endIcon={<GitHubIcon fontSize="large"/>}
+          >
+            Source code
+          </Button>
+        </Link>
+      </Typography>
+    </>
+  );
+}
+
+export default About;

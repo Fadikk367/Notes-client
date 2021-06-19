@@ -7,10 +7,7 @@ const Wrapper =  styled.div`
   align-items: center;
   padding: 2rem;
   background-color: #3f51b5;
-
-  max-width: 1200px;
-  width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   color: white;
 `;
 

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.header`
-  width: 100vw;
+  width: 100%;
   background-color: #3f51b5;
 
   color: white;
@@ -10,7 +10,7 @@ const Wrapper = styled.header`
 
 const Content = styled.div`
   max-width: 1200px;
-  width: 1200px;
+  min-width: 700px;
   padding: 2rem;
 
   display: flex;
