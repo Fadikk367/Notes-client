@@ -9,6 +9,9 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 
 import { queryClient } from 'index';
 
+// const devApiUrl = "http://localhost:28410";
+const productionBaseUrl = "https://bd2-notes.azurewebsites.net";
+
 
 const GridLayout = styled.div`
   display: grid;
@@ -28,11 +31,11 @@ const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { isLoading, data } = useQuery(
     'subjects', 
-    async () => (await axios.get('https://bd2-notes.azurewebsites.net/Subject')).data
+    async () => (await axios.get(`${productionBaseUrl}/Subject`)).data
   );
 
   const mutation = useMutation(
-    newSubject => axios.post('https://bd2-notes.azurewebsites.net/Subject', newSubject), { 
+    newSubject => axios.post(`${productionBaseUrl}/Subject`, newSubject), { 
       onSuccess: () => {
         queryClient.invalidateQueries('subjects');
         setIsOpen(false);

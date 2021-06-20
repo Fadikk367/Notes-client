@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 import { Typography, Button } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
@@ -36,7 +35,7 @@ const About = () => {
         }}
       >
         Sources for this project with documentation:
-        <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+        <a href="https://github.com/Fadikk367/Notes-server" style={{ textDecoration: 'none', color: 'white' }}>
           <Button
             color="primary"
             variant="contained"
@@ -45,7 +44,7 @@ const About = () => {
           >
             Source code
           </Button>
-        </Link>
+        </a>
       </Typography>
     </Container>
   );

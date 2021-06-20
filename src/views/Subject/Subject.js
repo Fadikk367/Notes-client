@@ -22,6 +22,9 @@ import { Search, PostAdd, MoreVert, ArrowBack } from '@material-ui/icons';
 
 import { queryClient } from 'index';
 
+// const devApiUrl = "http://localhost:28410";
+const productionBaseUrl = "https://bd2-notes.azurewebsites.net";
+
 
 const Subject = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,19 +37,19 @@ const Subject = () => {
 
   const { isLoading: isLoadingSubjects, data: subjects } = useQuery(
     `subjects`, 
-    async () => (await axios.get('https://bd2-notes.azurewebsites.net/Subject')).data
+    async () => (await axios.get(`${productionBaseUrl}/Subject`)).data
   );
 
   const { isLoading, data: notes, refetch: refetchNotes } = useQuery(
     [`subject-${id}-notes`, search], 
     async ({ queryKey }) => {
       const search = queryKey[1];
-      return (await axios.get(`https://bd2-notes.azurewebsites.net/Subject/${id}/Notes?search=${search}`)).data
+      return (await axios.get(`${productionBaseUrl}/Subject/${id}/Notes?search=${search}`)).data
     }
   );
 
   const mutation = useMutation(
-    newNote => axios.post('https://bd2-notes.azurewebsites.net/Note', newNote), { 
+    newNote => axios.post(`${productionBaseUrl}/Note`, newNote), { 
       onSuccess: () => {
         queryClient.invalidateQueries(`subject-${id}-notes`);
         setIsOpen(false);
@@ -55,16 +58,16 @@ const Subject = () => {
   );
 
   const deleteSubjectMutation = useMutation(
-    () => axios.delete(`https://bd2-notes.azurewebsites.net/Subject/${id}`), { 
+    () => axios.delete(`${productionBaseUrl}/Subject/${id}`), { 
       onSuccess: () => {
-        history.push('/subjects');
+        history.push('/');
         queryClient.invalidateQueries(`subjects`);
       }
     }
   );
 
   const deleteNoteMutation = useMutation(
-    noteId => axios.delete(`https://bd2-notes.azurewebsites.net/Note/${noteId}`), { 
+    noteId => axios.delete(`${productionBaseUrl}/Note/${noteId}`), { 
       onSuccess: () => {
         queryClient.invalidateQueries(`subject-${id}-notes`);
       }
@@ -92,7 +95,7 @@ const Subject = () => {
         <>
         <Headline>
           <Typography variant="h4">
-            <IconButton onClick={e => history.push('/subjects')}>
+            <IconButton onClick={e => history.push('/')}>
               <ArrowBack />
             </IconButton>
             {subject && subject.name}
